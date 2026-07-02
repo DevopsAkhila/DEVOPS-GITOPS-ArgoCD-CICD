@@ -51,5 +51,8 @@ jobs:
           sed -i "s/^tag:.*/tag: ${{ github.run_number }}/" values.yaml
 
           git add values.yaml
+
+          git diff --cached --quiet || \
           git commit -m "Updated image tag to ${{ github.run_number }}"
+
           git push
